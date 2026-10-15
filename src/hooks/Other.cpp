@@ -13,7 +13,7 @@ namespace {
     constexpr int PRACTICE_MUSIC_ITEM = 17;
 }
 
-class $modify(MenuGameManager, GameManager) {
+class $modify(CMMGameManager, GameManager) {
     bool isIconUnlocked(int id, IconType type) {
         if (hacks::isOn(Hack::UnlockIcons)) {
             return true;
@@ -29,7 +29,7 @@ class $modify(MenuGameManager, GameManager) {
     }
 };
 
-class $modify(MenuGameStatsManager, GameStatsManager) {
+class $modify(CMMGameStatsManager, GameStatsManager) {
     bool isItemUnlocked(UnlockType type, int id) {
         if (hacks::isOn(Hack::PracticeMusic) && type == UnlockType::GJItem && id == PRACTICE_MUSIC_ITEM) {
             return true;
@@ -38,7 +38,7 @@ class $modify(MenuGameStatsManager, GameStatsManager) {
     }
 };
 
-class $modify(MenuTransitionFade, CCTransitionFade) {
+class $modify(CMMTransitionFade, CCTransitionFade) {
     static CCTransitionFade* create(float duration, CCScene* scene) {
         return CCTransitionFade::create(hacks::isOn(Hack::NoTransition) ? 0.f : duration, scene);
     }

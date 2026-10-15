@@ -70,9 +70,10 @@ jobs:
         run: |
           {
             cmake build
-            cmake --build build --config Release
+            cmake --build build --config Release -- -k 0
           } > build-log.txt 2>&1 || true
-          ERRORS=$(grep -E -A4 "error:|error [A-Z]+[0-9]+:|CMake Error|FAILED:|fatal" build-log.txt | head -n 120)
+          # Skip the long compiler command lines so more errors fit
+          ERRORS=$(grep -E -A3 "error:|error [A-Z]+[0-9]+:|CMake Error" build-log.txt | grep -v -e "-std=gnu++" | head -n 150)
           if [ -z "$ERRORS" ]; then
             ERRORS=$(tail -n 80 build-log.txt)
           fi

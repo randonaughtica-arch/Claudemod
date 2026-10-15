@@ -19,7 +19,7 @@ namespace {
     constexpr int FREE_COPY_PASSWORD = 1;
 }
 
-class $modify(MenuEditLevelLayer, EditLevelLayer) {
+class $modify(CMMEditLevelLayer, EditLevelLayer) {
     void onShare(CCObject* sender) {
         if (m_level) {
             if (hacks::isOn(Hack::VerifyHack)) {
@@ -34,7 +34,7 @@ class $modify(MenuEditLevelLayer, EditLevelLayer) {
     }
 };
 
-class $modify(MenuEditorUI, EditorUI) {
+class $modify(CMMEditorUI, EditorUI) {
     void constrainGameLayerPosition(float x, float y) {
         if (hacks::isOn(Hack::FreeScroll)) {
             return;
@@ -51,7 +51,7 @@ class $modify(MenuEditorUI, EditorUI) {
     }
 };
 
-class $modify(MenuLevelInfoLayer, LevelInfoLayer) {
+class $modify(CMMLevelInfoLayer, LevelInfoLayer) {
     bool init(GJGameLevel* level, bool challenge) {
         if (level && hacks::isOn(Hack::CopyHack)) {
             level->m_password = FREE_COPY_PASSWORD;

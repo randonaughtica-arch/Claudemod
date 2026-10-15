@@ -55,13 +55,13 @@ namespace {
     };
 }
 
-class $modify(SpeedhackScheduler, CCScheduler) {
+class $modify(CMMScheduler, CCScheduler) {
     void update(float dt) {
         CCScheduler::update(dt * hacks::activeSpeed());
     }
 };
 
-class $modify(MenuGameLayer, GJBaseGameLayer) {
+class $modify(CMMGameLayer, GJBaseGameLayer) {
     void handleButton(bool down, int button, bool isPlayer1) {
         // Button 1 is jump; 2 and 3 are platformer left/right
         if (down && button == 1) {
@@ -81,7 +81,7 @@ class $modify(MenuGameLayer, GJBaseGameLayer) {
     }
 };
 
-class $modify(MenuPlayLayer, PlayLayer) {
+class $modify(CMMPlayLayer, PlayLayer) {
     struct Fields {
         CCLabelBMFont* overlay = nullptr;
         float overlayTime = 0.f;
@@ -221,7 +221,7 @@ class $modify(MenuPlayLayer, PlayLayer) {
     }
 };
 
-class $modify(MenuPlayerObject, PlayerObject) {
+class $modify(CMMPlayerObject, PlayerObject) {
     void playDeathEffect() {
         if (hacks::isOn(Hack::NoDeathEffect)) {
             return;

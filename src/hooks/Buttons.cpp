@@ -29,7 +29,7 @@ namespace {
     }
 }
 
-class $modify(MenuMenuLayer, MenuLayer) {
+class $modify(CMMMenuLayer, MenuLayer) {
     bool init() {
         if (!MenuLayer::init()) {
             return false;
@@ -43,7 +43,7 @@ class $modify(MenuMenuLayer, MenuLayer) {
 };
 
 // PauseLayer::init is inlined on Windows, so buttons go in customSetup
-class $modify(MenuPauseLayer, PauseLayer) {
+class $modify(CMMPauseLayer, PauseLayer) {
     void customSetup() {
         PauseLayer::customSetup();
         auto winSize = CCDirector::sharedDirector()->getWinSize();
@@ -51,7 +51,7 @@ class $modify(MenuPauseLayer, PauseLayer) {
     }
 };
 
-class $modify(MenuEditorPauseLayer, EditorPauseLayer) {
+class $modify(CMMEditorPauseLayer, EditorPauseLayer) {
     bool init(LevelEditorLayer* editorLayer) {
         if (!EditorPauseLayer::init(editorLayer)) {
             return false;
